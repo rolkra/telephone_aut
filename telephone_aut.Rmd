@@ -1,0 +1,42 @@
+---
+title: "Thelephones in Austria"
+author: "Roland Krasser"
+date: "11 9 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+```{r prepare}
+library(tidyverse)
+library(explore)
+```
+
+## Data
+
+```{r}
+data <- read_csv2("ha.csv", na = "NA")
+data %>% describe()
+```
+
+## Explore
+
+```{r}
+data %>% 
+  explore_count(year, n = ha_total,
+                title = "'Hauptanschlüsse' in Austria")
+```
+
+```{r}
+data %>% 
+  filter(!is.na(ha_man)) %>% 
+  explore_count(year, n = ha_man,
+                title = "'Hauptanschlüsse Manuell' in Austria")
+```
+
