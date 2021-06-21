@@ -21,7 +21,7 @@ library(explore)
 ## Data
 
 ```{r}
-data <- read_csv2("ha.csv", na = "NA")
+data <- read_csv("ha.csv", na = "NA")
 data %>% describe()
 ```
 
